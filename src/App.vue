@@ -1,4 +1,7 @@
 <script setup>
+import { ref } from 'vue';
+import CicloVida from './components/CicloVida.vue';
+
   /*
   VUE ROUTER para las rutas
   1- Debemos instalar vue-router: npm i vue-router
@@ -20,7 +23,21 @@
   1. Instalar pinia-plugin-persistedstate: npm i pinia-plugin-persistedstate
   2. Configurar en el main.js
 */
+
+/* CICLO DE VIDA
+Creación: beforeCreate, created
+Montaje: beforeMount, mounted
+Actualización: beforeUpdate, updated
+Desmontaje: beforeUnmount, unmounted
+*/
+
+const mostrar = ref(true)
 </script>
 <template>
   <RouterView />
+
+  <button @click="mostrar = !mostrar">
+    {{  mostrar ? "Desmontar" : "Montar" }} Componente
+  </button>
+  <CicloVida v-if="mostrar" />
 </template>
